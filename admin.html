@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap css start -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- bootstrap css end -->
+    <!-- bootstrap-icons start -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
+    <!-- bootstrap-icons end -->
+    <link rel="shortcut icon" href="Images/IRCTC-Logo-PNG-768x768.webp" type="image/x-icon" />
+    <!-- Custom CSS Start -->
+    <link rel="stylesheet" href="Css/index.css" />
+    <!-- Custom CSS Start -->
+    <title>IRCTC</title>
+</head>
+
+<body>
+    <!-- top header start -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index.html">Indian Railways</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">24-10-2023 [00:46:45]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="#">Admin Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- top header end -->
+
+    <!-- Admin Section Start -->
+    <section class="adminSection" id="adminSection">
+        <h1 class="py-2 text-center mb-0" style="color: white; background-color: var(--bs-secondary-color)">
+            Adminstrator
+        </h1>
+        <div class="d-flex align-items-start">
+            <div class="nav flex-column me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical"
+                style="width: 300px; background-color: var(--bs-secondary-color)">
+                <button class="nav-link text-white adminMenuBtn active" id="dashboard-tab" data-bs-toggle="pill"
+                    data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+                    Dashboard
+                </button>
+                <button class="nav-link text-white adminMenuBtn" id="trains-tab" data-bs-toggle="pill"
+                    data-bs-target="#trains" type="button" role="tab" aria-controls="trains" aria-selected="false">
+                    Train
+                </button>
+                <button class="nav-link text-white adminMenuBtn" id="viewTicket-tab" data-bs-toggle="pill"
+                    data-bs-target="#viewTickets" type="button" role="tab" aria-controls="viewTickets"
+                    aria-selected="false">
+                    View Tickets
+                </button>
+                <button class="nav-link text-white adminMenuBtn" id="pnrStatus-tab" data-bs-toggle="pill"
+                    data-bs-target="#pnrStatus" type="button" role="tab" aria-controls="pnrStatus"
+                    aria-selected="false">
+                    PNR Status
+                </button>
+                <button class="nav-link text-white adminMenuBtn" id="viewFeedback-tab" data-bs-toggle="pill"
+                    data-bs-target="#viewFeedback" type="button" role="tab" aria-controls="viewFeedback"
+                    aria-selected="false">
+                    View Feedback
+                </button>
+            </div>
+
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab"
+                    tabindex="0">
+                    <div class="container main" style="margin-left: 70px; max-width: 900px">
+                        <div class="row g-3 m-0 justify-content-space-between showAll">
+                            <!-- <div class="card col-6 mb-3" style="max-width: 540px">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fs-3">5</h5>
+                                    <p class="card-text fs-3">Resigestered Users</p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="trains" role="tabpanel" aria-labelledby="trains-tab" tabindex="0"></div>
+                <div class="tab-pane fade" id="viewTickets" role="tabpanel" aria-labelledby="viewTicket-tab"
+                    tabindex="0">
+                    <div class="container rounded bg-white p-5" style="max-width: 800px; margin: 50px 100px">
+                        <h4 class="text-primary">Ticket Details:</h4>
+                        <hr />
+                        <form class="row g-3 align-items-center">
+                            <div class="col-md-4">
+                                <label for="adminFrom" class="form-label">From</label>
+                                <input type="date" class="form-control" id="adminFrom" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="adminTo" class="form-label">To:</label>
+                                <input type="date" class="form-control" id="adminTo" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputState" class="form-label">Tickets:</label>
+                                <select id="inputState" class="form-select">
+                                    <option selected>All Tickets</option>
+                                    <option>Sleeper</option>
+                                    <option>3 Tier Ac</option>
+                                    <option>2 Tier Ac</option>
+                                </select>
+                            </div>
+                            <hr />
+                            <div class="col-md-3 align-self-start">
+                                <button type="submit" class="btn btn-primary">
+                                    View Tickets
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="aShowViewTickets">
+                        <div class="container">
+                            <span class="showNumber bg-white p-2">Total Tickets: 1</span>
+                            <table class="table">
+                                <thead>
+                                    <th>PNR NO.</th>
+                                    <th>Status</th>
+                                    <th>Train No</th>
+                                    <th>Train Name</th>
+                                    <th>Train Date</th>
+                                    <th>Mobile No.</th>
+                                    <th>Booked by</th>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pnrStatus" role="tabpanel" aria-labelledby="pnrStatus-tab" tabindex="0">
+                </div>
+                <div class="tab-pane fade" id="viewFeedback" role="tabpanel" aria-labelledby="viewFeedback-tab"
+                    tabindex="0">
+                    <div class="container rounded bg-white" style="margin: 50px 80px; max-width: 900px">
+                        <table class="table" width="100%">
+                            <thead>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Message</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Akshay</td>
+                                    <td>abcd@gmail.com</td>
+                                    <td>Booking Tickets by using this site very good</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Admin Section end -->
+
+    <!-- Bootstrap js file start -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap js file end -->
+
+    <script src="/Js/admn.js"></script>
+</body>
+
+</html>
