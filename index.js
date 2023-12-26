@@ -198,7 +198,7 @@ function showTrain(data, date) {
         <tr>
         <td>
         <span class="img">
-        <img src="../Icon/free-train-icon-1045-thumb.png" alt="train logo" class="img-fluid" style="height: 40px;">
+        <img src="Icon/free-train-icon-1045-thumb.png" alt="train logo" class="img-fluid" style="height: 40px;">
         </span>
         <h5 class="trainName d-inline-block text-break" id="trainName">${trainName}(${trainNumber})</h5>
         <h6 class="stationName text-primary" id="stationName">${stationFrom} <i class="bi bi-arrow-right-circle-fill"></i> ${stationTo}</h6>
