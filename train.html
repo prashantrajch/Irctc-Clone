@@ -77,7 +77,7 @@
             <ul class="dropdown-menu" role="tablist">
               <li role="presentation">
                 <!-- <a href="" class="dropdown-item">Train Search</a> -->
-                <button class="dropdown-item active" id="trainSearchSection-tab" data-bs-toggle="tab"
+                <button class="dropdown-item t active" id="trainSearchSection-tab" data-bs-toggle="tab"
                   data-bs-target="#trainSearchSection" type="button" role="tab" aria-controls="trainSearchSection"
                   aria-selected="true">
                   Train Search
@@ -85,14 +85,14 @@
               </li>
               <li role="presentation">
                 <!-- <a href="" class="dropdown-item">PNR Status</a> -->
-                <button class="dropdown-item" id="pnrSection-tab" data-bs-toggle="tab" data-bs-target="#pnrSection"
+                <button class="dropdown-item t" id="pnrSection-tab" data-bs-toggle="tab" data-bs-target="#pnrSection"
                   type="button" role="tab" aria-controls="pnrSection" aria-selected="false">
                   PNR Status
                 </button>
               </li>
               <li role="presentation">
                 <!-- <a href="" class="dropdown-item">Cancel Ticket</a> -->
-                <button class="dropdown-item" data-bs-toggle="tab" data-bs-target="#pnrSection" type="button" role="tab"
+                <button class="dropdown-item t" data-bs-toggle="tab" data-bs-target="#pnrSection" type="button" role="tab"
                   aria-controls="pnrSection" aria-selected="false">
                   Cancel Ticket
                 </button>
@@ -237,6 +237,14 @@
 
   <!-- my home js file start -->
   <script src="Js/train.js"></script>
+  <script>
+    let navLink = document.querySelectorAll('.navbar .t')
+    navLink.forEach((elm) => {
+      elm.addEventListener('click', () => {
+        document.getElementsByClassName('navbar-toggler')[0].click();
+      })
+    })
+  </script>
   <!-- my home js file end -->
 </body>
 
