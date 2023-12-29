@@ -13,7 +13,7 @@
   <!-- bootstrap-icons end -->
   <link rel="shortcut icon" href="Images/IRCTC-Logo-PNG-768x768.webp" type="image/x-icon" />
   <!-- Custom CSS Start -->
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css" />
   <!-- Custom CSS Start -->
   <title>IRCTC</title>
 </head>
@@ -44,13 +44,14 @@
             <button class="nav-link pLogActive" id="pLogSwitch" data-bs-toggle="modal" data-bs-target="#plogModal">
               Login
             </button>
-            <button class="nav-link" id="pLogSwitch2">Logout </button>
+            <button class="nav-link" id="pLogSwitch2">Logout</button>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="register.html">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-danger" href="admin.html" id="aLogin" data-bs-toggle="modal" data-bs-target="#alogModal">Admin Login</a>
+            <a class="nav-link text-danger" href="admin.html" id="aLogin" data-bs-toggle="modal"
+              data-bs-target="#alogModal">Admin Login</a>
           </li>
         </ul>
       </div>
@@ -78,18 +79,23 @@
                 <!-- <a href="" class="dropdown-item">Train Search</a> -->
                 <button class="dropdown-item active" id="trainSearchSection-tab" data-bs-toggle="tab"
                   data-bs-target="#trainSearchSection" type="button" role="tab" aria-controls="trainSearchSection"
-                  aria-selected="true">Train Search</button>
+                  aria-selected="true">
+                  Train Search
+                </button>
               </li>
               <li role="presentation">
                 <!-- <a href="" class="dropdown-item">PNR Status</a> -->
                 <button class="dropdown-item" id="pnrSection-tab" data-bs-toggle="tab" data-bs-target="#pnrSection"
-                  type="button" role="tab" aria-controls="pnrSection" aria-selected="false">PNR Status</button>
+                  type="button" role="tab" aria-controls="pnrSection" aria-selected="false">
+                  PNR Status
+                </button>
               </li>
               <li role="presentation">
                 <!-- <a href="" class="dropdown-item">Cancel Ticket</a> -->
                 <button class="dropdown-item" data-bs-toggle="tab" data-bs-target="#pnrSection" type="button" role="tab"
-                  aria-controls="pnrSection" aria-selected="false">Cancel Ticket</button>
-
+                  aria-controls="pnrSection" aria-selected="false">
+                  Cancel Ticket
+                </button>
               </li>
               <li>
                 <a href="index.html" class="dropdown-item">Book Ticket</a>
@@ -118,37 +124,41 @@
   <div id="pnrSection" class="pnrSection tab-pane fade" id="pnrSection" role="tabpanel" aria-labelledby="pnrSection-tab"
     tabindex="0">
     <div class="container">
-      <div class="card p-5">
+      <div class="card p-md-5">
         <div class="card-body">
           <p class="fs-4 text-primary">PNR Status/Cancel Ticket</p>
           <div class="row">
             <div class="col">
               <input type="number" class="form-control" placeholder="Enter PNR Number" aria-label="PNR Number"
-                id="pnrInput">
+                id="pnrInput" />
             </div>
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary" id="getStatus">Get Status</button>
+            <div class="col-md-3 col">
+              <button type="submit" class="btn btn-primary" id="getStatus" style="width: 100%;">
+                Get Status
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <table class="table mt-5">
-          <tr class="table-primary">
-            <th scope="col">PNR No</th>
-            <th scope="col">Status</th>
-            <th scope="col">Train No</th>
-            <th scope="col">Train Name</th>
-            <th scope="col">Train Source</th>
-            <th scope="col">Destination</th>
-            <th scope="col">Departure</th>
+      
+      <div class="table-responsive mt-2">
+      <table class="table" style="min-width: 1000px;">
+        <tr class="table-primary">
+          <th scope="col">PNR No</th>
+          <th scope="col">Status</th>
+          <th scope="col">Train No</th>
+          <th scope="col">Train Name</th>
+          <th scope="col">Train Source</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Departure</th>
           <th scope="col">Arrival Time</th>
           <th scope="col">Date</th>
           <th scope="col">Mobile No</th>
           <th scope="col">Booked by</th>
         </tr>
-        <tr id="pnrBody">
-        </tr>
+        <tr id="pnrBody"></tr>
       </table>
+      </div>
     </div>
   </div>
   <!-- PNR section end -->
@@ -157,22 +167,25 @@
   <div class="trainSearchSection tab-pane fade active show" id="trainSearchSection" role="tabpanel"
     aria-labelledby="trainSearchSection-tab" tabindex="0">
     <div class="container">
-      <div class="card p-5">
+      <div class="card p-md-5">
         <div class="card-body">
           <p class="fs-4 text-primary">Train Search</p>
           <form class="row" id="searchTrainBtn">
             <div class="col">
               <input type="number" class="form-control" placeholder="Enter the train number" aria-label="PNR Number"
-                id="trainNumberInput">
+                id="trainNumberInput" />
             </div>
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary" >Get Status</button>
+            <div class="col-md-3 col-6">
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Get Status
+              </button>
             </div>
           </form>
         </div>
       </div>
-      <table class="table mt-5">
-        <thead class="table-primary">
+      <div class="table-responsive">
+      <table class="table mt-2" style="min-width: 950px;">
+        <thead class="table-primary" >
           <th>Sr No.</th>
           <th>Train Name</th>
           <th>Train No</th>
@@ -181,13 +194,12 @@
           <th>Departure Time</th>
           <th>Arrival Time</th>
         </thead>
-        <tbody id="searchTrainShow">
-        </tbody>
+        <tbody id="searchTrainShow"></tbody>
       </table>
+    </div>
     </div>
   </div>
   <!-- Train Search Section Start -->
-
 
   <!-- Login modal start -->
   <div class="modal fade" id="plogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -201,11 +213,11 @@
           <form class="row g-3" id="pLog">
             <div class="col-md-12">
               <label for="pEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="pEmail">
+              <input type="email" class="form-control" id="pEmail" />
             </div>
             <div class="col-md-12">
               <label for="pPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="pPassword">
+              <input type="password" class="form-control" id="pPassword" />
             </div>
             <div class="col-12">
               <button type="submit" class="btn btn-primary">Sign in</button>
@@ -226,7 +238,6 @@
   <!-- my home js file start -->
   <script src="Js/train.js"></script>
   <!-- my home js file end -->
-
 </body>
 
 </html>
