@@ -86,19 +86,19 @@
             </ul>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="historicalSec-tab" data-bs-toggle="tab" data-bs-target="#historicalSec"
+            <button class="nav-link t" id="historicalSec-tab" data-bs-toggle="tab" data-bs-target="#historicalSec"
               type="button" role="tab" aria-controls="historicalSec" aria-selected="false">
               Historical Place
             </button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" id="staySection-tab" data-bs-toggle="tab" data-bs-target="#staySection"
+            <button class="nav-link t" id="staySection-tab" data-bs-toggle="tab" data-bs-target="#staySection"
               type="button" role="tab" aria-controls="staySection" aria-selected="false">
               Stay
             </button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" id="contactUsSection-tab" data-bs-toggle="tab" data-bs-target="#contactUsSection"
+            <button class="nav-link t" id="contactUsSection-tab" data-bs-toggle="tab" data-bs-target="#contactUsSection"
               type="button" role="tab" aria-controls="contactUsSection" aria-selected="false">
               Contact Us
             </button>
@@ -578,6 +578,14 @@
 
   <!-- my index.html js file start -->
   <script src="index.js"></script>
+  <script>
+    let navLink = document.querySelectorAll('.navbar .t')
+    navLink.forEach((elm) => {
+      elm.addEventListener('click', () => {
+        document.getElementsByClassName('navbar-toggler')[0].click();
+      })
+    })
+  </script>
   <!-- my index.html js file end -->
 </body>
 
