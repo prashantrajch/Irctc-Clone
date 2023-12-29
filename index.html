@@ -59,7 +59,7 @@
   <!-- top header end -->
 
   <!-- second header start -->
-  <nav class="navbar navbar-expand-lg" style="background-color: #fff">
+  <nav class="navbar navbar-expand-lg scndNavbar" style="background-color: #fff">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarNav">
         <a class="navbar-brand" href="index.html">
@@ -129,25 +129,29 @@
               </div>
               <div class="card-body">
                 <form class="row g-3" id="trainSearchBtw1">
-                  <div class="col-md-5">
+                  <div class="col-md-5 col-10 dropBox">
                     <label for="from" class="form-label">From</label>
-                    <input type="text" class="form-control" id="from" required />
+                    <input type="text" class="form-control search" id="from" required />
+                    <ul class="showList">
+                    </ul>
                   </div>
-                  <div class="col-md-2 align-self-end">
-                    <button class="btn">
+                  <div class="col-md-2 col-2 align-self-end">
+                    <div class="btn" id="interchangeBtn">
                       <img src="Icon/arrows.png" alt="Interchange" class="img-fluid" />
-                    </button>
+                    </div>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-md-5 col-12 dropBox">
                     <label for="to" class="form-label">TO</label>
-                    <input type="text" class="form-control" id="to" required />
+                    <input type="text" class="form-control search" id="to" required />
+                    <ul class="showList">
+                    </ul>
                   </div>
                   <div class="col-6">
                     <label for="date" class="form-label">DD/MM/YY</label>
                     <input type="date" class="form-control" id="date" required />
                   </div>
                   <div class="col-6">
-                    <label for="classes" class="form-label">State</label>
+                    <label for="classes" class="form-label">Classes</label>
                     <select id="classes" class="form-select">
                       <option selected>All Classes</option>
                       <option>AC 2 Tier (2A)</option>
@@ -179,18 +183,23 @@
       <!-- Train List Section start -->
       <div class="content">
         <section class="trainList" id="trainList">
-          <div class="header shadow p-5 bg-body-tertiary rounded">
+          <div class="header shadow py-3 bg-body-tertiary rounded">
             <form class="row g-2 align-items-end" id="trainSearchBtw2">
-              <img src="Icon/free-train-icon-1045-thumb.png" alt="train image" class="col-1" height="70px" />
-              <div class="col">
+              <img src="Icon/free-train-icon-1045-thumb.png" alt="train image" id="iconUpper" class="col-md-1 col-2" height="70px" />
+              <div class="col-md col-5 dropBox">
                 <label for="mFrom" class="form-label">Origin</label>
-                <input type="text" class="form-control" id="mFrom" />
+                <input type="text" class="form-control search" id="mFrom" />
+                <ul class="showList">
+                  <li class="list">Motihari</li>
+                </ul>
               </div>
-              <div class="col">
+              <div class="col-md col-5 dropBox">
                 <label for="mTo" class="form-label">Destination</label>
-                <input type="text" class="form-control" id="mTo" />
+                <input type="text" class="form-control search" id="mTo" />
+                <ul class="showList">
+                </ul>
               </div>
-              <div class="col">
+              <div class="col-md col-5">
                 <label for="inputAddress" class="form-label">Journey Class</label>
                 <select class="form-select" aria-label="Default select example">
                   <option selected>All</option>
@@ -199,33 +208,34 @@
                   <option>2 Tier AC</option>
                 </select>
               </div>
-              <div class="col">
+              <div class="col-md col-4">
                 <label for="mDate" class="form-label">Journey Date</label>
                 <input type="date" class="form-control" id="mDate" />
               </div>
-              <div class="col-1">
-                <button type="submit" class="btn btn-primary">Modify</button>
+              <div class="col-md col-3">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Modify</button>
               </div>
             </form>
           </div>
           <div class="container">
-            <div class="showList mt-5">
-              <table class="table" style="width: 100%">
+            <div class="showList table-responsive-sm mt-5">
+              <table class="table" style="min-width: 700px;" id="bookTable">
                 <thead class="table-primary">
-                  <th class="text-center" style="width: 30%">
-                    Train Name & no
+                  <th class="text-center" style="width: 45%;">Train Name & no
                   </th>
-                  <th class="text-center" style="width: 10%">Departs</th>
-                  <th class="text-center" style="width: 10%">Arrival</th>
-                  <th class="text-center" style="width: 10%">Duration</th>
-                  <th class="text-center" style="width: 20%">Fare</th>
+                  <th class="text-center">Departs</th>
+                  <th class="text-center">Arrival</th>
+                  <th class="text-center">Duration</th>
+                  <th class="text-center" style="width: 25%;">Fare</th>
                 </thead>
                 <tbody id="trainListBody">
-                  <div class="text-center"  id="spinner">
-                    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-                      <span class="visually-hidden"></span>
-                    </div>
-                  </div>
+                  <tr id="spinner">
+                    <th colspan="6" class="text-center">
+                        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                          <span class="visually-hidden"></span>
+                        </div>
+                    </th>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -262,7 +272,6 @@
               <section class="detailsSection slide" id="detailsSection">
                 <div class="container">
                   <div id="addForm">
-
                   </div>
                   <button type="button" class="btn fw-bold" id="addPassenger">
                     + Add Passenger
@@ -314,7 +323,7 @@
                     <h3 class="bg-primary text-white p-2 card-header">
                       Travelling Passangers
                     </h3>
-                    <div class="preview-card-body py-2">
+                    <div class="preview-card-body py-2 ps-2">
                     </div>
                   </div>
                 </div>
