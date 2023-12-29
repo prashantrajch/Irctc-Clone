@@ -44,13 +44,14 @@
             <button class="nav-link pLogActive" id="pLogSwitch" data-bs-toggle="modal" data-bs-target="#plogModal">
               Login
             </button>
-            <button class="nav-link" id="pLogSwitch2">Logout </button>
+            <button class="nav-link" id="pLogSwitch2">Logout</button>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="register.html">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-danger" href="admin.html" id="aLogin" data-bs-toggle="modal" data-bs-target="#alogModal">Admin Login</a>
+            <a class="nav-link text-danger" href="admin.html" id="aLogin" data-bs-toggle="modal"
+              data-bs-target="#alogModal">Admin Login</a>
           </li>
         </ul>
       </div>
@@ -78,8 +79,12 @@
               <li>
                 <a href="train.html" class="dropdown-item" id="trainSearch">Train Search</a>
               </li>
-              <li><a href="train.html" class="dropdown-item">PNR Status</a></li>
-              <li><a href="train.html" class="dropdown-item">Cancel Ticket</a></li>
+              <li>
+                <a href="train.html" class="dropdown-item">PNR Status</a>
+              </li>
+              <li>
+                <a href="train.html" class="dropdown-item">Cancel Ticket</a>
+              </li>
               <li>
                 <a href="index.html" class="dropdown-item">Book Ticket</a>
               </li>
@@ -141,181 +146,145 @@
   <!-- Login modal end -->
 
   <!-- Register Form start  -->
-    <div class="container" id="register">
-      <h1 style="color: var(--irctc-primary-color);">Individual Registration</h1>
-      <hr>
-      <p>Please use a valid E-mail and Mobile number in registration</p>
-        <form class="row g-3 text-center needs-validation" id="registerUser" novalidate>
-            <hr>
-            <label for="userName" class="form-label col-md-3">Username<span class="text-danger">*</span></label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="userName" required>
-                <div class="invalid-feedback">
-                    Please enter a valid username
-                </div>
-            </div>
-            <label for="inputPassword" class="form-label col-md-3">Password<span class="text-danger">*</span>:</label>
-            <div class="col-md-3">
-                <input type="password" class="form-control" id="inputPassword" required>
-                <div class="invalid-feedback">
-                    Password combination must have character,number and special symbol and length should be greater than
-                    6
-                </div>
-            </div>
-            <hr>
-            <label for="cnfPassword" class="form-label col-md-3">Confirm Password<span
-                    class="text-danger">*</span>:</label>
-            <div class="col-md-3">
-                <input type="password" class="form-control" id="cnfPassword" required>
-                <div class="invalid-feedback">
-                    Password doesn't match
-                </div>
-            </div>
-            <hr>
-            <label for="securityQues" class="form-label col-md-3">Security Questions<span
-                    class="text-danger">*</span>:</label>
-            <div class="col-md-3">
-                <select id="securityQues" class="form-select" required>
-                    <option value="" disabled selected hidden>Select Security Questions</option>
-                    <option>First Mobile no</option>
-                    <option>Your Pet Name</option>
-                    <option>Your Nick Name</option>
-                    <option>Your Favourite Teacher Name</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please Select the security Questions
-                </div>
-            </div>
-            <label for="securityAns" class="form-label col-md-3">Security Answare <span
-                    class="text-danger">*</span>:</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="securityAns" required>
-                <div class="invalid-feedback">
-                    Please enter the answare the given questions
-                </div>
-            </div>
-            <hr>
-            <p class="px-3 py-3 bg-info rounded text-start fs-5" style="color: var(--irctc-primary-color);">Personal Details</p>
-            <label for="fName" class="form-label col-md-3">Name <span class="text-danger">*</span>:</label>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="fName" placeholder="First Name" required>
-                        <div class="invalid-feedback">
-                          Please enter a first name
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="mName" placeholder="Middle Name" required>
-                        <div class="invalid-feedback">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="lName" placeholder="Last Name" required>
-                        <div class="invalid-feedback">
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <label for="flexRadioDefault" class="form-label col-md-3">Gender <span class="text-danger">*</span>:</label>
-            <div class="col-md-9">
-                <div class="row">
-                <div class="form-check col-md-2 text-start">
-                    <input class="form-check-input" type="radio" name="gender" id="male" required checked>
-                    <label class="form-check-label" for="male">
-                      Male
-                    </label>
-                  </div>
-                  <div class="form-check col-md-2 text-start">
-                    <input class="form-check-input" type="radio" name="gender" id="female" required>
-                    <label class="form-check-label" for="female">
-                      Female
-                    </label>
-                  </div>
-                  <div class="form-check col-md-2 text-start">
-                    <input class="form-check-input" type="radio" name="gender" id="transgender" required>
-                    <label class="form-check-label" for="transgender">
-                      Transgender
-                    </label>
-                  </div>
-                </div>
-            </div>
-            <hr>
-            <label for="inputDate" class="form-label col-md-3">Date of Birth<span class="text-danger">*</span></label>
-            <div class="col-md-3">
-                <input type="date" class="form-control" id="inputDate" required>
-                <div class="invalid-feedback">
-                    Please enter a valid date
-                </div>
-            </div>
-            <hr>
-            <label for="inputEmail" class="form-label col-md-3">Email<span class="text-danger">*</span></label>
-            <div class="col-md-3">
-                <input type="email" class="form-control" id="inputEmail" required>
-                <div class="invalid-feedback">
-                    Please enter a valid email
-                </div>
-            </div>
-            <label for="inputMobile" class="form-label col-md-3">Number<span class="text-danger">*</span>:</label>
-            <div class="col-md-3">
-              <div class="input-group">
-                <div class="input-group-text">+91</div>
-                <input type="number" class="form-control" id="inputMobile" maxlength="10" required>
-                <div class="invalid-feedback">
-                    Please enter a valid number
-                </div>
-              </div>
-            </div>
-            <hr>
-            <p class="px-3 py-3 bg-info rounded text-start fs-5" style="color: var(--irctc-primary-color);">Residental Address</p>
-            <label for="inputAddress" class="form-label col-md-3">Address <span class="text-danger">*</span>:</label>
-            <div class="col-md-3">
-                <textarea class="form-control" id="inputAddress" required></textarea>
-                <div class="invalid-feedback">
-                    please enter a valid address
-                </div>
-              </div>
-              <label for="inputPincode" class="form-label col-md-3">Pincode<span class="text-danger">*</span>:</label>
-              <div class="col-md-3">
-                  <input type="number" minlength="6" class="form-control" id="inputPincode" required>
-                  <div class="invalid-feedback">
-                      Please enter a valid Pincode
-                  </div>
-              </div>
-              <hr>
-              <label for="city" class="form-label col-md-3">City<span
-                class="text-danger">*</span>:</label>
-        <div class="col-md-3">
-            <select id="city" class="form-select" required>
-                <option value="motihari">Motihari</option>
-            </select>
-            <div class="invalid-feedback">
-                Please Select the valid city name
-            </div>
+  <div class="container" id="register">
+    <h1 style="color: var(--irctc-primary-color)">Individual Registration</h1>
+    <hr />
+    <p>Please use a valid E-mail and Mobile number in registration</p>
+    <form class="row g-3 m-0 text-center needs-validation" id="registerUser" novalidate>
+      <hr />
+      <label for="userName" class="form-label col-md-3">Username<span class="text-danger">*</span></label>
+      <div class="col-md-3">
+        <input type="text" class="form-control" id="userName" required />
+        <div class="invalid-feedback">Please enter a valid username</div>
+      </div>
+      <label for="inputPassword" class="form-label col-md-3">Password<span class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <input type="password" class="form-control" id="inputPassword" required />
+        <div class="invalid-feedback">
+          Password combination must have character,number and special symbol
+          and length should be greater than 6
         </div>
-        <label for="securityQuestate" class="form-label col-md-3">State<span
-            class="text-danger">*</span>:</label>
-    <div class="col-md-3">
-        <select id="state" class="form-select" required>
-            <option value="bihar">Bihar</option>
+      </div>
+      <hr />
+      <label for="cnfPassword" class="form-label col-md-3">Confirm Password<span class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <input type="password" class="form-control" id="cnfPassword" required />
+        <div class="invalid-feedback">Password doesn't match</div>
+      </div>
+      <hr />
+      <label for="securityQues" class="form-label col-md-3">Security Questions<span
+          class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <select id="securityQues" class="form-select" required>
+          <option value="" disabled selected hidden>
+            Select Security Questions
+          </option>
+          <option>First Mobile no</option>
+          <option>Your Pet Name</option>
+          <option>Your Nick Name</option>
+          <option>Your Favourite Teacher Name</option>
         </select>
         <div class="invalid-feedback">
-            Please Select the valid State name
+          Please Select the security Questions
         </div>
-    </div>
-    <hr>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Register</button>
-                <button type="reset" class="btn btn-primary">Reset</button>
-            </div>
-            <hr>
-        </form>
-    </div>
+      </div>
+      <label for="securityAns" class="form-label col-md-3">Security Answare <span class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <input type="text" class="form-control" id="securityAns" required />
+        <div class="invalid-feedback">
+          Please enter the answare the given questions
+        </div>
+      </div>
+      <hr />
+      <p class="px-3 py-3 bg-info rounded text-start fs-5" style="color: var(--irctc-primary-color)">
+        Personal Details
+      </p>
+      <label for="fName" class="form-label col-md-3">Name <span class="text-danger">*</span>:</label>
+      <div class="col-md-9">
+        <div class="row g-2">
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="fName" placeholder="First Name" required />
+            <div class="invalid-feedback">Please enter a first name</div>
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="mName" placeholder="Middle Name" required />
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="lName" placeholder="Last Name" required />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <label for="flexRadioDefault" class="form-label col-md-3">Gender <span class="text-danger">*</span>:</label>
+      <div class="col-md-9">
+        <input class="form-check-input" type="radio" name="gender" id="male" required checked />
+        <label class="form-check-label" for="male"> Male </label>
+        <input class="form-check-input" type="radio" name="gender" id="female" required />
+        <label class="form-check-label" for="female"> Female </label>
+        <input class="form-check-input" type="radio" name="gender" id="transgender" required />
+        <label class="form-check-label" for="transgender">
+          Transgender
+        </label>
+      </div>
+      <hr />
+      <label for="inputDate" class="form-label col-md-3">Date of Birth<span class="text-danger">*</span></label>
+      <div class="col-md-3">
+        <input type="date" class="form-control" id="inputDate" required />
+        <div class="invalid-feedback">Please enter a valid date</div>
+      </div>
+      <hr />
+      <label for="inputEmail" class="form-label col-md-3">Email<span class="text-danger">*</span></label>
+      <div class="col-md-3">
+        <input type="email" class="form-control" id="inputEmail" required />
+        <div class="invalid-feedback">Please enter a valid email</div>
+      </div>
+      <label for="inputMobile" class="form-label col-md-3">Number<span class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <div class="input-group">
+          <div class="input-group-text">+91</div>
+          <input type="number" class="form-control" id="inputMobile" maxlength="10" required />
+          <div class="invalid-feedback">Please enter a valid number</div>
+        </div>
+      </div>
+      <hr />
+      <p class="px-3 py-3 bg-info rounded text-start fs-5" style="color: var(--irctc-primary-color)">
+        Residental Address
+      </p>
+      <label for="inputAddress" class="form-label col-md-3">Address <span class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <textarea class="form-control" id="inputAddress" required></textarea>
+        <div class="invalid-feedback">please enter a valid address</div>
+      </div>
+      <label for="inputPincode" class="form-label col-md-3">Pincode<span class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <input type="number" minlength="6" class="form-control" id="inputPincode" required />
+        <div class="invalid-feedback">Please enter a valid Pincode</div>
+      </div>
+      <hr />
+      <label for="city" class="form-label col-md-3">City<span class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <select id="city" class="form-select" required>
+          <option value="motihari">Motihari</option>
+        </select>
+        <div class="invalid-feedback">Please Select the valid city name</div>
+      </div>
+      <label for="securityQuestate" class="form-label col-md-3">State<span class="text-danger">*</span>:</label>
+      <div class="col-md-3">
+        <select id="state" class="form-select" required>
+          <option value="bihar">Bihar</option>
+        </select>
+        <div class="invalid-feedback">Please Select the valid State name</div>
+      </div>
+      <hr />
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
+      </div>
+      <hr />
+    </form>
+  </div>
   <!-- Register Form end -->
 
-
-  
   <!-- Admin modal start -->
   <div class="modal fade" id="alogModal" tabindex="-1" aria-labelledby="aModal" aria-hidden="true">
     <div class="modal-dialog">
@@ -344,16 +313,15 @@
   </div>
   <!-- Admin modal end -->
 
+  <!-- Bootstrap js file start -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap js file end -->
 
-    <!-- Bootstrap js file start -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-    <!-- Bootstrap js file end -->
-
-    <!-- my js file start -->
-    <script src="Js/register.js"></script>
-    <!-- my js file end -->
+  <!-- my js file start -->
+  <script src="Js/register.js"></script>
+  <!-- my js file end -->
 </body>
 
 </html>
