@@ -9,7 +9,6 @@ let AllTRAINS;
   }
 })();
 
-
 function getAllUserData() {
   let userData = JSON.parse(localStorage.getItem("userData")) ?? [];
   return userData;
@@ -22,9 +21,13 @@ function createPData() {
 
 function dateFun() {
   let date = new Date();
-  document.getElementById(
-    "showCurrentTime"
-  ).innerText = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} [${date.getHours() > 12 ? date.getHours() - 12 : date.getHours()}:${date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()}:${date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds()} ${date.getHours() < 12? 'AM':'PM'}]`;
+  document.getElementById("showCurrentTime").innerText = `${date.getDate()}-${
+    date.getMonth() + 1
+  }-${date.getFullYear()} [${
+    date.getHours() > 12 ? date.getHours() - 12 : date.getHours()
+  }:${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}:${
+    date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
+  } ${date.getHours() < 12 ? "AM" : "PM"}]`;
 }
 
 setInterval(dateFun, 100);
@@ -126,14 +129,65 @@ plog.addEventListener("submit", (ev) => {
   ev.preventDefault();
 });
 
-
-function showInInputField(from,to,date) {
+function secondInputField(from, to, date) {
   let mForm = document.getElementById("mFrom");
   let mTo = document.getElementById("mTo");
   let mDate = document.getElementById("mDate");
   mForm.value = from;
   mTo.value = to;
   mDate.value = date;
+}
+
+document.getElementById('interchangeBtn').addEventListener('click', () => {
+  let from = document.getElementById('from');
+  let to = document.getElementById('to');
+  let temp;
+  temp = from.value;
+  from.value = to.value;
+  to.value  = temp;
+})
+
+let allInput = document.querySelectorAll('.search');
+allInput.forEach((elm,ind) => {
+  elm.addEventListener('keyup', (e) => {
+    let key = e.target.value;
+    let input = e.target;
+    key = key.toUpperCase();
+    getSearch(key,input,ind);
+  })
+})
+
+function getSearch(val,input,ind) {
+  let url = `https://api.railwayapi.site/api/v1/stations?q=${val}`;
+  fetch(url)
+      .then((respone) => {
+          return respone.json();
+      })
+      .then((result) => {
+          showSearch(result.data,input,ind);
+      })
+      .catch((er) => {
+          console.log(er);
+      });
+}
+
+function showSearch(data,input,ind) {
+  input.nextElementSibling.classList.add('active')
+  let html = '';
+  data.forEach((el) => {
+      if(el.stationName == null){
+          return
+      }
+      else{
+          html += `<li class="list" onclick='inputStation("${el.stationCode}", "${ind}")'>${el.stationName}</li>`
+      }
+  })
+  input.nextElementSibling.innerHTML = html;
+}
+function inputStation(val,ind){
+  let inp = document.getElementsByClassName('search')[ind];
+  inp.value = val;
+  inp.nextElementSibling.classList.remove('active');
 }
 
 const trainSearchBtw1 = document.getElementById("trainSearchBtw1");
@@ -149,7 +203,7 @@ trainSearchBtw1.addEventListener("submit", (e) => {
   to = to.value.toUpperCase();
   date = date.value;
   getTrainList(from, to, date);
-  showInInputField(from, to,date);
+  secondInputField(from, to, date);
 
   e.target.reset();
   e.preventDefault();
@@ -159,23 +213,27 @@ trainSearchBtw2.addEventListener("submit", (ev) => {
   let mfrom = ev.target.mFrom;
   let mto = ev.target.mTo;
   let date = ev.target.mDate;
-  
+
   mfrom = mfrom.value.toUpperCase();
   mto = mto.value.toUpperCase();
-  getTrainList(mfrom,mto, date);
-  
+  getTrainList(mfrom, mto, date);
+
   ev.preventDefault();
 });
 
 function getTrainList(from, to, date) {
-  let spinner = document.getElementById('spinner');
   const url = `https://api.railwayapi.site/api/v1/trainsBtwStations?fromStation=${from}&toStation=${to}&allTrains=true`;
   fetch(url)
     .then((response) => {
-      return response.json();
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        alert("Sorry! No Direct Train....Search Another City");
+        document.getElementsByTagName("tbody")[0].innerHTML =
+          "Please enter a valid details";
+      }
     })
     .then((result) => {
-      spinner.style.display = 'none';
       showTrain(result.data, date);
     })
     .catch((error) => {
@@ -196,24 +254,22 @@ function showTrain(data, date) {
     let duration = elem.duration;
     html += `
         <tr>
-        <td>
-        <span class="img">
+        <td style='font-weight: 700'>
         <img src="Icon/free-train-icon-1045-thumb.png" alt="train logo" class="img-fluid" style="height: 40px;">
-        </span>
-        <h5 class="trainName d-inline-block text-break" id="trainName">${trainName}(${trainNumber})</h5>
+        ${trainName}(${trainNumber})
         <h6 class="stationName text-primary" id="stationName">${stationFrom} <i class="bi bi-arrow-right-circle-fill"></i> ${stationTo}</h6>
         <h6 class="departs" id="departs">Departs on: All Day</h6>
         </td>
         <td class="text-center">
-        <img src="../Icon/sun.png" alt="" class="img-fluid mb-3" style="height: 60px;">
+        <img src="Icon/sun.png" alt="" class="img-fluid mb-3" style="height: 60px;">
         <h5 id="departsTime">${departure}</h5>
         </td>
         <td class="text-center">
-        <img src="../Icon/rain.png" alt="" class="img-fluid mb-3" style="height: 60px;">
+        <img src="Icon/rain.png" alt="" class="img-fluid mb-3" style="height: 60px;">
         <h5 id="arrivalTime">${arrival}</h5>
         </td>
         <td class="text-center">
-        <img src="../Icon/clock.png" alt="" class="img-fluid mb-3" style="height: 60px;">
+        <img src="Icon/clock.png" alt="" class="img-fluid mb-3" style="height: 60px;">
         <h5 id="duration">${duration}</h5>
         </td>
         <td class="text-center" style="vertical-align: middle;">
@@ -254,14 +310,14 @@ function currentTrain(check, value) {
         <h6 class="text-body-secondary">From Station</h6>
         <h4 class="fw-bold">${value[2]}</h4>
         <p class="text-body-secondary">
-          Departure: ${7} | ${value[5]}
+          Departure: ${value[7]} | ${value[4]}
         </p>
         </div>
         <div class="col-5">
         <h6 class="text-body-secondary">To Station</h6>
         <h4 class="fw-bold">${value[3]}</h4>
         <p class="text-body-secondary">
-          Arrival: ${7} | ${value[6]}
+          Arrival: ${value[7]} | ${value[5]}
         </p>
         </div>
     `;
@@ -278,8 +334,7 @@ addPassenger.addEventListener("click", () => {
 function addForm(ind) {
   let addFormBody = document.getElementById("addForm");
   pEmail();
-  let html = ``;
-  addFormBody.innerHTML += `                       
+  let html= `                       
      <div class="card pCard my-2 id="${ind}">
     <div class="card-body">
         <h5 class="mb-3">Person ${ind}</h5>
@@ -288,7 +343,7 @@ function addForm(ind) {
                 <input type="text" class="form-control" placeholder="Name" aria-label="Name" />
             </div>
             <div class="col">
-                <input type="number" class="form-control" placeholder="Age*" aria-label="Age" />
+                <input type="number" class="form-control" placeholder="Age" aria-label="Age" />
             </div>
             <div class="col">
                 <select name="" id="pGender" class="form-select">
@@ -301,6 +356,8 @@ function addForm(ind) {
         </div>
     </div>
     </div>`;
+
+    addFormBody.insertAdjacentHTML('beforeend', html);
 }
 
 addForm(index++);
@@ -326,7 +383,6 @@ savePassengers.addEventListener("click", () => {
   localStorage.setItem("passengerList", JSON.stringify(passengerList));
 
   currentTrain(true, AllTRAINS);
-  console.log(AllTRAINS);
 
   passengerList = createPData();
   for (const data of passengerList) {
@@ -342,10 +398,11 @@ let confirmBook = document.getElementById("confirmBook");
 
 confirmBook.addEventListener("submit", (e) => {
   e.preventDefault();
-  
+
   let pnrData = JSON.parse(localStorage.getItem("pnr")) ?? [];
-  let createPData = JSON.parse(localStorage.getItem('passengerList')) ?? [];
-  let user = document.getElementById('showUserName"');
+  let createPData = JSON.parse(localStorage.getItem("passengerList")) ?? [];
+  let user = document.getElementById('showUserName');
+  console.log(user);
   pnrData.push({
     pnr: createPData[0].pnr,
     status: "booked",
@@ -357,14 +414,25 @@ confirmBook.addEventListener("submit", (e) => {
     aTime: AllTRAINS[5],
     date: AllTRAINS[7],
     mobile: createPData[0].mobile,
-    user: 'prash',
+    user: user.innerHTML,
   });
   localStorage.setItem("pnr", JSON.stringify(pnrData));
-  alert(`Your pnr no:-${createPData[0].pnr}`);
+  // alert(`Your pnr no:-${createPData[0].pnr}`);
+  let html = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <h4 class="alert-heading">PNR No:- ${createPData[0].pnr}</h4>
+  <p>Congratulation, you successfully booked your ticket</p>
+  <hr>
+  <p class="mb-0 text-danger">Please rember your PNR No to Cancel and Find the ticket</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick='reload()'></button>
+</div>`
+document.querySelector('body').innerHTML = html;
   localStorage.removeItem("passengerList");
   AllTRAINS = "";
-  window.location.reload();
 });
+
+function reload(){
+  window.location.reload();
+}
 
 // Admi login validation check
 let userName = "admin";
@@ -376,10 +444,9 @@ aLog.addEventListener("submit", (e) => {
   let pass = e.target.aPassword;
   user = user.value;
   pass = pass.value;
-  
+
   if (user == userName) {
     if (pass == passwed) {
-      console.log("im run");
       window.location.href = "admin.html";
     }
   }
@@ -387,9 +454,6 @@ aLog.addEventListener("submit", (e) => {
 
   e.preventDefault();
 });
-
-
-
 
 let slider = document.getElementsByClassName("slide");
 let nextBtn = document.getElementsByClassName("nextBtn");
@@ -400,9 +464,6 @@ Array.from(nextBtn).forEach((elem, index) => {
   elem.addEventListener("click", () => {
     slider[index].style.marginLeft = `-25%`;
     bullet[index].classList.add("active");
-    // bullet[index].nextElementSibling.style[':before'] = 'var(--bs-primary-border-subtitle)';
+    bullet[index].nextElementSibling.style.color = 'var(--bs-blue)';
   });
 });
-
-
-
